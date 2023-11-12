@@ -21,6 +21,6 @@
         </style>
     </head>
     <body>
-        hola
+        Home
     </body>
 </html>
