@@ -1,21 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
-Route::get('/', function () {
-    return view('home');
-});
+/**Route::get('/', [PageController::class,('home')])->name('home');
 
-Route::get('/blog', function () {
-    $posts =
-        [['id' => 1 , 'title' => 'PHP', 'slug' => 'PHP'],
-        ['id' => 2 , 'title' => 'LARAVEL', 'slug' => 'Laravel'],
-        ['id' => 3 , 'title' => 'HTML', 'slug' => 'HTML'],
-        ];
-    return view('blog', ['posts'=>$posts]);
-});
+Route::get('/blog', [PageController::class,('blog')])->name('blog');
 
-Route::get('/blog/{slug}', function ($slug) {
-    $post = $slug;
-    return view('post', ['post'=>$post]);
+Route::get('/blog/{slug}', [PageController::class,('post')])->name('post');**/
+
+Route::controller(PageController::class)->group(function (){
+    Route::get('/', ('home'))->name('home');
+
+    Route::get('/blog', ('blog'))->name('blog');
+
+    Route::get('/blog/{slug}', ('post'))->name('post');
+
 });
