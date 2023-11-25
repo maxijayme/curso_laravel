@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -10,15 +10,11 @@ class PageController extends Controller
         return view('home');
     }
     public function blog(){
-        $posts =
-        [['id' => 1 , 'title' => 'PHP', 'slug' => 'PHP'],
-        ['id' => 2 , 'title' => 'LARAVEL', 'slug' => 'Laravel'],
-        ['id' => 3 , 'title' => 'HTML', 'slug' => 'HTML'],
-        ];
+        // $posts = Post::get();
+        $posts = Post::latest()->paginate(10);
         return view('blog', ['posts'=>$posts]);
     }
-    public function post($slug){
-        $post = $slug;
+    public function post(Post $post){
         return view('post', ['post'=>$post]);
     }
 }
