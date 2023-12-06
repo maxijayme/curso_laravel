@@ -18,7 +18,7 @@
                                     <a href="{{route('posts.edit',$post)}}" class="text-indigo-600">Editar</a>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <form action="{{route('posts.edit',$post)}}" method="POST">
+                                    <form action="{{route('posts.destroy',$post)}}" method="POST">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="text-indigo-600 bg-white px-4 py-2 rounded"
